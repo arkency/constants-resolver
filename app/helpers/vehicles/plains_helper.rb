@@ -1,0 +1,2 @@
+module Vehicles::PlainsHelper
+end
