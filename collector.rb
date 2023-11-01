@@ -66,6 +66,10 @@ end
 
 runner =
   Class.new(Parser::Runner) do
+    class << self
+      attr_accessor :_has_errors
+    end
+
     def runner_name
       "dudu"
     end
@@ -81,7 +85,9 @@ runner =
       return if collection.empty?
       puts
       collection.each { |pair| puts pair.join("\t") }
+      self.class._has_errors = true
     end
   end
 
 runner.go(ARGV)
+exit 1 if runner._has_errors
